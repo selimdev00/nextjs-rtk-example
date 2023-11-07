@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import Link from "next/link";
+import ReduxProvider from "@/components/ReduxProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -11,23 +13,16 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-  analytics,
-  team,
 }: {
   children: React.ReactNode;
-  analytics: React.ReactNode;
-  team: React.ReactNode;
 }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <h1 className={"flex justify-center py-2"}>hey from layout</h1>
-        <main>{children}</main>
-
-        <div className="grid grid-cols-2">
-          {analytics}
-          {team}
-        </div>
+        <h1 className={"flex justify-center py-2"}>
+          hey from layout, <Link href={"/"}>Go to main page </Link>
+        </h1>
+        <ReduxProvider>{children}</ReduxProvider>
       </body>
     </html>
   );
